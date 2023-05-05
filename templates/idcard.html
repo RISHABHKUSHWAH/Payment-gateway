@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+
+        <h1 class="">PRINT Id CARD</h1>
+        <div class="card-cont">
+            <h2>Your card</h2>
+            <form method="post" action="http://127.0.0.1:8000/printedcard/idcard/" enctype="multipart/form-data" >
+                {% csrf_token %}
+                <h2>price for print card -Rs{{amount}}</h2>
+                <input type="text" placeholder="Name" Name='name' required>
+                <input type="number" placeholder="mobile" Name="mob" required>
+                <input type="text" placeholder="Adderss" Name="address" required>
+                <input type="file" required Name="file">
+                {% if user.is_authenticated %}
+                <a href="http://127.0.0.1:8000/card/amountOfOrder/?type=idcard"><input type="submit" placeholder="submit"></a>
+                <!-- <button type="submit">submit</button> -->
+                {% else %}
+                <a href="/account/singUp">submit</a>
+                {% endif %}
+            </form>
+        </div>
+
+        <!-- contact section start -->
+        <div class="contact_section layout_padding">
+            <div class="container-fluid">
+                <h1 class="ballet_text">Testimonial</h1>
+                <p class="amet_text">amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore </p>
+                <div class="contact_section2">
+                    <div class="row">
+                        <div class="col-md-6 padding_left_0">
+                            <div class="mail_section">
+                                <input type="" class="mail_text" placeholder="Name" name="Name">
+                                <input type="" class="mail_text" placeholder="Phone Number" name="Phone Number">
+                                <input type="" class="mail_text" placeholder="Email" name="Email">
+                                <textarea class="massage_text" placeholder="Message" rows="5" id="comment"
+                                    name="Message"></textarea>
+                                <div class="send_bt"><a href="#">send</a></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 padding_0">
+                            <div class="map-responsive">
+                                <iframe
+                                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&amp;q=Eiffel+Tower+Paris+France"
+                                    width="600" height="400" frameborder="0" style="border:0; width: 100%;"
+                                    allowfullscreen=""></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- contact section end -->
+      {% endblock %}

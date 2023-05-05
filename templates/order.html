@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<table border = "1" cellpadding = "5" cellspacing = "5">
+    <tr>
+       <td>Card</td>
+       <td>rs {{price.amount}}</td>
+    </tr>
+    <tr>
+       <td>delivery</td>
+       <td>rs {{price.deliveryCharge}}</td>
+    </tr>
+    <tr>
+        <td>Total</td>
+        <td>rs {{sum}}</td>
+     </tr>
+ </table>
+ <form action="http://127.0.0.1:8000/card/amountOfOrder/{{formAction}}" method="POST">
+   {% csrf_token %}
+ <button class="btn btn-success" type="submit">Pay</button>
+</form>
+ <!-- <a href="" class="btn btn-success">Pay</a> -->
+{% endblock  %}
